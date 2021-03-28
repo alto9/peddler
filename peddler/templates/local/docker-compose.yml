@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+
+  {% if RUN_MYSQL %}
+  mysql:
+    image: {{ DOCKER_IMAGE_MYSQL }}
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    restart: unless-stopped
+    volumes:
+      - ../../data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
+  {% endif %}
+
+  {% if RUN_SMTP %}
+  smtp:
+    image: {{ DOCKER_IMAGE_SMTP }}
+    restart: unless-stopped
+  {% endif %}
+
+  {% if RUN_STORE %}
+  store:
+    image: {{ DOCKER_IMAGE_OPENCART }}
+    ports:
+      - "8000:80"
+    restart: unless-stopped
+    # volumes:
+    #   - ../apps/opencart/config.php:/var/www/html/config.php:rw
+    #   - ../apps/opencart/admin/config.php:/var/www/html/admin/config.php:rw
+    depends_on:
+      {% if RUN_MYSQL %}- mysql{% endif %}
+      {% if RUN_SMTP %}- smtp{% endif %}
+      {{ patch("local-docker-compose-store-dependencies")|indent(6) }}
+  {% endif %}
+
+  {{ patch("local-docker-compose-services")|indent(2) }}

@@ -1,0 +1,11 @@
+.*.swp
+!.gitignore
+TODO
+__pycache__
+*.egg-info/
+*.pyc
+*venv37
+
+/build/
+/dist/
+/releases/

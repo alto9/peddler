@@ -1,0 +1,12 @@
+appdirs
+click>=7.0
+click_repl
+mypy
+pycryptodome
+jinja2>=2.9
+kubernetes
+pyyaml>=4.2b1
+setuptools==40.3.0
+
+# Installing urllib3==1.26.0 causes compatibility errors with requests==2.24.0
+urllib3<1.26.0

@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+
+    mysql-job:
+      image: {{ DOCKER_IMAGE_MYSQL }}
+      entrypoint: []
+      command: ["echo", "done"]
+      depends_on: {{ [("mysql", RUN_MYSQL)]|list_if }}
+
+    {{ patch("local-docker-compose-jobs-services")|indent(4) }}

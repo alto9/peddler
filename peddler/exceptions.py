@@ -1,0 +1,2 @@
+class PeddlerError(Exception):
+    pass
