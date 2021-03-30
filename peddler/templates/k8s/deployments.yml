@@ -70,7 +70,7 @@ spec:
 #             name: opencart-settings-shop
 #         - name: settings-admin
 #           configMap:
-#             name: openedx-settings-admin
+#             name: opencart-settings-admin
 {% endif %}
 {% if RUN_MYSQL %}
 ---

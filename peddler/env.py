@@ -315,13 +315,7 @@ def needs_major_upgrade(root: str) -> bool:
     return 0 < current < required
 
 
-def current_release(root: str) -> str:
-    """
-    Return the name of the current Open edX release.
-    """
-    return {"0": "ironwood", "3": "ironwood", "10": "juniper", "11": "koa"}[
-        current_version(root).split(".")[0]
-    ]
+
 
 
 def current_version(root: str) -> str:

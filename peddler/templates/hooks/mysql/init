@@ -14,6 +14,6 @@ do
 done
 echo "MySQL is up and running"
 
-# edx-platform database
+# opencart-platform database
 mysql -u {{ MYSQL_ROOT_USERNAME }} --password="{{ MYSQL_ROOT_PASSWORD }}" --host "{{ MYSQL_HOST }}" --port {{ MYSQL_PORT }} -e 'CREATE DATABASE IF NOT EXISTS {{ OPENCART_MYSQL_DATABASE }};'
 mysql -u {{ MYSQL_ROOT_USERNAME }} --password="{{ MYSQL_ROOT_PASSWORD }}" --host "{{ MYSQL_HOST }}" --port {{ MYSQL_PORT }} -e 'GRANT ALL ON {{ OPENCART_MYSQL_DATABASE }}.* TO "{{ OPENCART_MYSQL_USERNAME }}"@"%" IDENTIFIED BY "{{ OPENCART_MYSQL_PASSWORD }}";'
