@@ -25,12 +25,12 @@ configMapGenerator:
 - name: caddy-config
   files:
   - apps/caddy/Caddyfile
-# - name: opencart-settings-shop
-#   files:{% for file in "apps/opencart"|walk_templates %}
-#   - {{ file }}{% endfor %}
-# - name: opencart-settings-admin
-#   files:{% for file in "apps/opencart/admin"|walk_templates %}
-#   - {{ file }}{% endfor %}
+- name: opencart-settings-shop
+  files:{% for file in "apps/opencart"|walk_templates %}
+  - {{ file }}{% endfor %}
+- name: opencart-settings-admin
+  files:{% for file in "apps/opencart-admin"|walk_templates %}
+  - {{ file }}{% endfor %}
 - name: nginx-config
   files:{% for file in "apps/nginx"|walk_templates %}
   - {{ file }}{% endfor %}

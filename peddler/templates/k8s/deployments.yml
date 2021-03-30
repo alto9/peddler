@@ -57,67 +57,20 @@ spec:
           ports:
             - containerPort: 80
         #   volumeMounts:
-        #     - mountPath: /openedx/edx-platform/lms/envs/tutor/
-        #       name: settings-lms
-        #     - mountPath: /openedx/edx-platform/cms/envs/tutor/
-        #       name: settings-cms
-        #     - mountPath: /openedx/config
-        #       name: config
+        #     - mountPath: /var/www/html/
+        #       name: settings-shop
+        #     - mountPath: /var/www/html/admin
+        #       name: settings-admin
           resources:
             requests:
               memory: 2Gi
-    #   volumes:
-    #     - name: settings-lms
-    #       configMap:
-    #         name: openedx-settings-lms
-    #     - name: settings-cms
-    #       configMap:
-    #         name: openedx-settings-cms
-    #     - name: config
-    #       configMap:
-    #         name: openedx-config
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: lms-worker
-#   labels:
-#     app.kubernetes.io/name: lms-worker
-# spec:
-#   selector:
-#     matchLabels:
-#       app.kubernetes.io/name: lms-worker
-#   template:
-#     metadata:
-#       labels:
-#         app.kubernetes.io/name: lms-worker
-#     spec:
-#       containers:
-#         - name: lms-worker
-#           image: {{ DOCKER_IMAGE_OPENCART }}
-#           args: ["celery", "worker", "--app=lms.celery", "--loglevel=info", "--hostname=edx.lms.core.default.%%h", "--maxtasksperchild=100", "--exclude-queues=edx.cms.core.default"]
-#           env:
-#           - name: SERVICE_VARIANT
-#             value: lms
-#           - name: C_FORCE_ROOT
-#             value: "1"
-#           volumeMounts:
-#             - mountPath: /openedx/edx-platform/lms/envs/tutor/
-#               name: settings-lms
-#             - mountPath: /openedx/edx-platform/cms/envs/tutor/
-#               name: settings-cms
-#             - mountPath: /openedx/config
-#               name: config
 #       volumes:
-#         - name: settings-lms
+#         - name: settings-shop
 #           configMap:
-#             name: openedx-settings-lms
-#         - name: settings-cms
+#             name: opencart-settings-shop
+#         - name: settings-admin
 #           configMap:
-#             name: openedx-settings-cms
-#         - name: config
-#           configMap:
-#             name: openedx-config
+#             name: openedx-settings-admin
 {% endif %}
 {% if RUN_MYSQL %}
 ---
