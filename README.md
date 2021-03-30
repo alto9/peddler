@@ -1,4 +1,4 @@
-# [![peddler](https://user-images.githubusercontent.com/33878967/33095422-7c8aa7a4-ceb8-11e7-810a-4b261fdff6d6.png)](https://alto9.com)
+# Peddler
 
 Peddler is an open source, container-based, OpenCart distribution from [https://alto9.com](https://alto9.com).
 
@@ -7,7 +7,7 @@ It's written in Python and Click and is designed to make launching an OpenCart i
 - [Review product documentation](http://www.alto9.com/peddler/docs).
 - [Download compiled version](https://www.alto9.com/peddler/download).
 
-<img width="1006" alt="screenshot at nov 29 14-11-32" src="https://user-images.githubusercontent.com/13119842/56807911-1bf66f00-67fe-11e9-9b7b-96ce9ceab645.png">
+
 
 Table of Contents
 =================
