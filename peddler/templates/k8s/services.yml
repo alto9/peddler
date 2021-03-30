@@ -1,0 +1,71 @@
+{% if RUN_CADDY %}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caddy
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      name: http
+    - port: 443
+      name: https
+  selector:
+    app.kubernetes.io/name: caddy
+{% endif %}
+{% if RUN_STORE %}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: store
+{% endif %}
+{% if RUN_MYSQL %}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  type: NodePort
+  ports:
+    - port: 3306
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: mysql
+{% endif %}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      name: http
+  selector:
+    app.kubernetes.io/name: nginx
+{% if RUN_SMTP %}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: smtp
+spec:
+  type: NodePort
+  ports:
+    - port: 25
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: smtp
+{% endif %}
+{{ patch("k8s-services") }}

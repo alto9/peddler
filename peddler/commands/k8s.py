@@ -181,9 +181,8 @@ def quickstart(context: click.Context, non_interactive: bool) -> None:
     if not config["RUN_CADDY"]:
         fmt.echo_alert(
             "Potentially invalid configuration: RUN_CADDY=false\n"
-            "This setting might have been defined because you previously set WEB_PROXY=true. This is no longer"
-            " necessary in order to get Peddler to work on Kubernetes. In Peddler v11+ a Caddy-based load balancer is"
-            " provided out of the box to handle SSL/TLS certificate generation at runtime. If you disable this"
+            "In Peddler, a Caddy-based load balancer is provided out of the box"
+            " to handle SSL/TLS certificate generation at runtime. If you disable this"
             " service, you will have to configure an Ingress resource and a certificate manager yourself to redirect"
             " traffic to the nginx service. See the Kubernetes section in the Peddler documentation for more"
             " information."
@@ -197,12 +196,10 @@ def quickstart(context: click.Context, non_interactive: bool) -> None:
     fmt.echo_info(
         """Your OpenCart platform is ready and can be accessed at the following urls:
 
-    {http}://{lms_host}
-    {http}://{cms_host}
+    {http}://{store_host}
     """.format(
             http="https" if config["ENABLE_HTTPS"] else "http",
-            lms_host=config["LMS_HOST"],
-            cms_host=config["CMS_HOST"],
+            store_host=config["STORE_HOST"],
         )
     )
 

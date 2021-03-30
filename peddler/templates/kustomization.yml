@@ -1,0 +1,39 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- k8s/namespace.yml
+- k8s/deployments.yml
+- k8s/jobs.yml
+- k8s/services.yml
+- k8s/volumes.yml
+{{ patch("kustomization-resources") }}
+
+# namespace to deploy all Resources to
+namespace: {{ K8S_NAMESPACE }}
+
+# labels added to all Resources
+# https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+commonLabels:
+  app.kubernetes.io/instance: opencart-{{ ID }}
+  app.kubernetes.io/version: {{ PEDDLER_VERSION }}
+  app.kubernetes.io/part-of: opencart
+  app.kubernetes.io/managed-by: peddler
+  {{ patch("kustomization-commonlabels")|indent(2) }}
+
+configMapGenerator:
+- name: caddy-config
+  files:
+  - apps/caddy/Caddyfile
+# - name: opencart-settings-shop
+#   files:{% for file in "apps/opencart"|walk_templates %}
+#   - {{ file }}{% endfor %}
+# - name: opencart-settings-admin
+#   files:{% for file in "apps/opencart/admin"|walk_templates %}
+#   - {{ file }}{% endfor %}
+- name: nginx-config
+  files:{% for file in "apps/nginx"|walk_templates %}
+  - {{ file }}{% endfor %}
+{{ patch("kustomization-configmapgenerator") }}
+
+{{ patch("kustomization") }}

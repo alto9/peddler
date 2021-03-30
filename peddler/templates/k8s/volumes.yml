@@ -1,0 +1,32 @@
+{% if RUN_CADDY %}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: caddy
+  labels:
+    app.kubernetes.io/component: volume
+    app.kubernetes.io/name: caddy
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+{% endif %}
+{% if RUN_MYSQL %}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql
+  labels:
+    app.kubernetes.io/component: volume
+    app.kubernetes.io/name: mysql
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+{% endif %}

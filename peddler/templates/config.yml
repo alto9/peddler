@@ -8,6 +8,7 @@ ID: "{{ 24|random_string }}"
 STORE_HOST: "www.myopencart.com"
 
 # The following are default values
+RUN_CADDY: true
 RUN_STORE: true
 ENABLE_HTTPS: false
 RUN_MYSQL: true
@@ -17,6 +18,7 @@ OPENCART_AWS_ACCESS_KEY: ""
 OPENCART_AWS_SECRET_ACCESS_KEY: ""
 DEV_PROJECT_NAME: "peddler_dev"
 DOCKER_REGISTRY: "docker.io/"
+DOCKER_IMAGE_CADDY: "{{ DOCKER_REGISTRY }}caddy:2.2.1"
 DOCKER_IMAGE_OPENCART: "{{ DOCKER_REGISTRY }}alto9/opencart:{{ PEDDLER_VERSION }}"
 DOCKER_IMAGE_OPENCART_DEV: "{{ DOCKER_REGISTRY }}alto9/opencart-dev:{{ PEDDLER_VERSION }}"
 DOCKER_IMAGE_MYSQL: "{{ DOCKER_REGISTRY }}mysql:5.7.32"
@@ -27,12 +29,11 @@ K8S_NAMESPACE: "opencart"
 LANGUAGE_CODE: "en"
 OPENCART_MYSQL_DATABASE: "opencart"
 OPENCART_MYSQL_USERNAME: "opencart"
-OPENCART_COMMON_VERSION: "open-release/koa.2"
 MYSQL_HOST: "mysql"
 MYSQL_PORT: 3306
 MYSQL_ROOT_USERNAME: "root"
 NGINX_HTTP_PORT: 80
-PLATFORM_NAME: "My OpenCart"
+PLATFORM_NAME: "My OpenCart Shop"
 PLUGINS: []
 SMTP_HOST: "smtp"
 SMTP_PORT: 25
