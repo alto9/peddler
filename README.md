@@ -20,7 +20,7 @@ See the [LICENSE file](LICENSE.txt) for license rights and limitations.
 
 ## Get the Latest News
 
-- **Twitter** - Follow [Alto9](https://twitter.com/alto9).
+- **Twitter** - Follow [Alto9](https://twitter.com/alto9cloud).
 - **Blog** - Get the latest updates from the [Alto9 blog](https://alto9.com/blog/).
 - **Facebook** - Follow [Alto9](https://www.facebook.com/Alto9Inc).
 - **LinkedIn** - Follow [Alto9](https://www.linkedin.com/company/alto9).
