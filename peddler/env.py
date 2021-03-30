@@ -315,9 +315,6 @@ def needs_major_upgrade(root: str) -> bool:
     return 0 < current < required
 
 
-
-
-
 def current_version(root: str) -> str:
     """
     Return the current environment version. If the current environment has no version,
