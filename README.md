@@ -1,4 +1,4 @@
-# [![peddler](https://raw.githubusercontent.com/alto9/peddler/master/assets/images/peddler_logo_dark.png)](https://alto9.com)
+# [![peddler](https://raw.githubusercontent.com/alto9/peddler/master/assets/images/peddler_logo_light.png)](https://alto9.com)
 
 Peddler is an open source, container-based, OpenCart distribution from [https://alto9.com](https://alto9.com).
 
