@@ -22,8 +22,8 @@ See the [LICENSE file](LICENSE.txt) for license rights and limitations.
 
 - **Twitter** - Follow [Alto9](https://twitter.com/alto9).
 - **Blog** - Get the latest updates from the [Alto9 blog](https://alto9.com/blog/).
-- **Facebook** - Follow [Alto9](https://www.facebook.com/Alto9).
-- **LinkedIn** - Follow [Alto9](https://www.linkedin.com/company/alto9/).
+- **Facebook** - Follow [Alto9](https://www.facebook.com/Alto9Inc).
+- **LinkedIn** - Follow [Alto9](https://www.linkedin.com/company/alto9).
 
 ## Contributing
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
