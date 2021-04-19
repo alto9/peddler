@@ -287,7 +287,7 @@ def delete(context: Context, yes: bool) -> None:
 def init(context: Context, limit: Optional[str]) -> None:
     config = peddler_config.load(context.root)
     runner = K8sJobRunner(context.root, config)
-    for service in ["mysql", "elasticsearch", "mongodb"]:
+    for service in ["mysql"]:
         if peddler_config.is_service_activated(config, service):
             wait_for_pod_ready(config, service)
     jobs.initialise(runner, limit_to=limit)

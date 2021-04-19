@@ -81,6 +81,30 @@ class ComposeJobRunner(jobs.BaseJobRunner):
             command,
         )
 
+    def run_cmd(self, service: str, command: str) -> int:
+        """
+        Run the specified command on the "{{ service }}" service from local/docker-compose.yml. 
+        For backward-compatibility reasons, if the corresponding
+        service does not exist, run the service from good old regular
+        docker-compose.yml.
+        """
+        compose_path = peddler_env.pathjoin(self.root, "local", "docker-compose.yml")
+
+        opts = [] if utils.is_a_tty() else ["-T"]
+
+        if service in serialize.load(open(compose_path).read())["services"]:
+            return self.docker_compose_func(
+                self.root,
+                self.config,
+                "exec",
+                *opts,
+                service,
+                "sh",
+                "-e",
+                "-c",
+                command,
+            )
+
 
 @click.command(help="Run all or a selection of configured OpenCart services")
 @click.option("-d", "--detach", is_flag=True, help="Start in daemon mode")
@@ -132,7 +156,7 @@ def restart(context: Context, services: List[str]) -> None:
     else:
         for service in services:
             if service == "store":
-                if config["RUN_STORE"]:
+                if config["RUN_OPENCART"]:
                     command += ["store"]
             else:
                 command.append(service)

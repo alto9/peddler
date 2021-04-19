@@ -13,6 +13,10 @@ class BaseJobRunner:
         command = self.render(*path)
         self.run_job(service, command)
 
+    def run_cmd_from_template(self, service: str, *path: str) -> None:
+        command = self.render(*path)
+        self.run_cmd(service, command)
+
     def render(self, *path: str) -> str:
         rendered = env.render_file(self.config, *path).strip()
         if isinstance(rendered, bytes):
@@ -20,6 +24,9 @@ class BaseJobRunner:
         return rendered
 
     def run_job(self, service: str, command: str) -> int:
+        raise NotImplementedError
+
+    def run_cmd(self, service: str, command: str) -> int:
         raise NotImplementedError
 
     def iter_plugin_hooks(
@@ -43,10 +50,10 @@ def initialise(runner: BaseJobRunner, limit_to: Optional[str] = None) -> None:
                 runner.run_job_from_template(
                     service, plugin_name, "hooks", service, "pre-init"
                 )
-    # for service in ["lms", "cms", "forum"]:
-    #     if limit_to is None or limit_to == service:
-    #         fmt.echo_info("Initialising {}...".format(service))
-    #         runner.run_job_from_template(service, "hooks", service, "init")
+    for service in ["opencart"]:
+        if limit_to is None or limit_to == service:
+            fmt.echo_info("Initialising {}...".format(service))
+            runner.run_job_from_template(service, "hooks", service, "init")
     for plugin_name, hook in runner.iter_plugin_hooks("init"):
         if limit_to is None or limit_to == plugin_name:
             for service in hook:

@@ -1,0 +1,17 @@
+echo "Initialising OpenCart..."
+
+cd /var/www/html/install
+
+php cli_install.php install \
+    --username {{ OPENCART_ADMIN_USERNAME }} \
+    --email {{ CONTACT_EMAIL }} \
+    --password {{ OPENCART_ADMIN_PASSWORD }} \
+    --cloud 0 \
+    --http_server https://{{ STORE_HOST }}/ \
+    --db_driver mysqli \
+    --db_hostname {{ MYSQL_HOST }} \
+    --db_username {{ OPENCART_MYSQL_USERNAME }} \
+    --db_password {{ OPENCART_MYSQL_PASSWORD }} \
+    --db_database {{ OPENCART_MYSQL_DATABASE }} \
+    --db_port {{ MYSQL_PORT }} \
+    --db_prefix oc_

@@ -14,7 +14,7 @@ spec:
   selector:
     app.kubernetes.io/name: caddy
 {% endif %}
-{% if RUN_STORE %}
+{% if RUN_OPENCART %}
 ---
 apiVersion: v1
 kind: Service
@@ -23,10 +23,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8000
+    - port: 80
       protocol: TCP
   selector:
-    app.kubernetes.io/name: store
+    app.kubernetes.io/name: opencart
 {% endif %}
 {% if RUN_MYSQL %}
 ---

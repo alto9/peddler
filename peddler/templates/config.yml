@@ -9,7 +9,7 @@ STORE_HOST: "www.myopencart.com"
 
 # The following are default values
 RUN_CADDY: true
-RUN_STORE: true
+RUN_OPENCART: true
 ENABLE_HTTPS: false
 RUN_MYSQL: true
 RUN_SMTP: true
@@ -26,9 +26,10 @@ DOCKER_IMAGE_NGINX: "{{ DOCKER_REGISTRY }}nginx:1.13"
 DOCKER_IMAGE_SMTP: "{{ DOCKER_REGISTRY }}namshi/smtp:latest"
 LOCAL_PROJECT_NAME: "peddler_local"
 K8S_NAMESPACE: "opencart"
-LANGUAGE_CODE: "en"
 OPENCART_MYSQL_DATABASE: "opencart"
 OPENCART_MYSQL_USERNAME: "opencart"
+OPENCART_ADMIN_USERNAME: "admin"
+OPENCART_ADMIN_PASSWORD: "opencart"
 MYSQL_HOST: "mysql"
 MYSQL_PORT: 3306
 MYSQL_ROOT_USERNAME: "root"

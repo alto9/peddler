@@ -1,0 +1,241 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /Users/derrickanderson/Documents/Alto9/Code/peddler
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 152
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 27
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1347
+    content: "\r\nThe default interactive shell is now zsh.\r\nTo update your account to use zsh, please run `chsh -s /bin/zsh`.\r\nFor more details, please visit https://support.apple.com/kb/HT208050.\r\n\e[?1034hDerricks-MacBook-Pro:peddler derrickanderson$ "
+  - delay: 7523
+    content: p
+  - delay: 110
+    content: e
+  - delay: 232
+    content: d
+  - delay: 154
+    content: d
+  - delay: 301
+    content: l
+  - delay: 192
+    content: e
+  - delay: 133
+    content: r
+  - delay: 209
+    content: ' '
+  - delay: 320
+    content: l
+  - delay: 299
+    content: o
+  - delay: 100
+    content: c
+  - delay: 143
+    content: a
+  - delay: 104
+    content: l
+  - delay: 436
+    content: ' '
+  - delay: 552
+    content: q
+  - delay: 155
+    content: u
+  - delay: 143
+    content: i
+  - delay: 210
+    content: c
+  - delay: 123
+    content: k
+  - delay: 228
+    content: s
+  - delay: 145
+    content: t
+  - delay: 170
+    content: a
+  - delay: 126
+    content: r
+  - delay: 256
+    content: t
+  - delay: 1328
+    content: "\r\n"
+  - delay: 661
+    content: "\e[32m==================================================\r\n        Interactive platform configuration\r\n==================================================\e[0m\r\n"
+  - delay: 14
+    content: "\e[33mAre you configuring a production ready store? Type 'n' if you are just testing Peddler on your local computer\e[0m [y/N] "
+  - delay: 3100
+    content: 'n'
+  - delay: 789
+    content: "\r\n\e[34mAs you are not running this store in production, we automatically set the following configuration values:\e[0m\r\n\e[34m    STORE_HOST = localhost:8000/\e[0m\r\n\e[34m    ENABLE_HTTPS = False\e[0m\r\n"
+  - delay: 18
+    content: "\e[33mYour store name/title\e[0m [Demo Shop] "
+  - delay: 1461
+    content: "\r\n\e[33mYour new admin account username\e[0m [admin] "
+  - delay: 971
+    content: "\r\n\e[33mYour new admin account password\e[0m [opencart] "
+  - delay: 818
+    content: "\r\n\e[33mEmail address for admin account\e[0m [sales@demoshop.com] "
+  - delay: 902
+    content: "\r\n"
+  - delay: 8
+    content: "\e[34mConfiguration saved to /Users/derrickanderson/desktop/peddler_root/config.yml\e[0m\r\n"
+  - delay: 68
+    content: "\e[34mEnvironment generated in /Users/derrickanderson/desktop/peddler_root/env\e[0m\r\n\e[32m==============================================\r\n        Stopping any existing platform\r\n==============================================\e[0m\r\n/Users/derrickanderson/desktop/peddler_root/env/version\r\n"
+  - delay: 21
+    content: "\e[35mdocker-compose -f /Users/derrickanderson/desktop/peddler_root/env/local/docker-compose.yml --project-name peddler_local stop\e[0m\r\n"
+  - delay: 1298
+    content: "\e[32m======================================================\r\n        Starting the platform in detached mode\r\n======================================================\e[0m\r\n/Users/derrickanderson/desktop/peddler_root/env/version\r\n"
+  - delay: 42
+    content: "\e[35mdocker-compose -f /Users/derrickanderson/desktop/peddler_root/env/local/docker-compose.yml --project-name peddler_local up --remove-orphans -d\e[0m\r\n"
+  - delay: 666
+    content: "Creating network \"peddler_local_default\" with the default driver\r\n"
+  - delay: 413
+    content: "Creating peddler_local_smtp_1 ... \r\r\n"
+  - delay: 17
+    content: "Creating peddler_local_mysql_1 ... \r\r\n"
+  - delay: 2412
+    content: "\e[2A\e[2K\rCreating peddler_local_smtp_1  ... \e[32mdone\e[0m\r\e[2B"
+  - delay: 154
+    content: "\e[1A\e[2K\rCreating peddler_local_mysql_1 ... \e[32mdone\e[0m\r\e[1B"
+  - delay: 91
+    content: "Creating peddler_local_opencart_1 ... \r\r\n"
+  - delay: 2353
+    content: "\e[1A\e[2K\rCreating peddler_local_opencart_1 ... \e[32mdone\e[0m\r\e[1B"
+  - delay: 162
+    content: "\e[32m================================================\r\n        Database creation and migrations\r\n================================================\e[0m\r\n/Users/derrickanderson/desktop/peddler_root/env/version\r\n"
+  - delay: 29
+    content: "\e[34mInitialising all services...\e[0m\r\n"
+  - delay: 10
+    content: "\e[35mdocker-compose -f /Users/derrickanderson/desktop/peddler_root/env/local/docker-compose.yml --project-name peddler_local -f /Users/derrickanderson/desktop/peddler_root/env/local/docker-compose.jobs.yml run --rm mysql-job sh -e -c echo \"Initialising MySQL...\"\r\nmysql_connection_max_attempts=10\r\nmysql_connection_attempt=0\r\nuntil mysql -u root --password=\"bLSJiLKk\" --host \"mysql\" --port 3306 -e 'exit'\r\ndo\r\n    mysql_connection_attempt=$(expr $mysql_connection_attempt + 1)\r\n    echo \"    [$mysql_connection_attempt/$mysql_connection_max_attempts] Waiting for MySQL service (this may take a while)...\"\r\n    if [ $mysql_connection_attempt -eq $mysql_connection_max_attempts ]\r\n    then\r\n      echo \"MySQL initialisation error\" 1>&2\r\n      exit 1\r\n    fi\r\n    sleep 10\r\ndone\r\necho \"MySQL is up and running\"\r\n\r\n# opencart-platform database\r\nmysql -u root --password=\"bLSJiLKk\" --host \"mysql\" --port 3306 -e 'CREATE DATABASE IF NOT EXISTS opencart;'\r\nmysql -u root --password=\"bLSJiLKk\" --host \"mysql\" --port 3306 -e 'GRANT ALL ON opencart.* TO \"opencart\"@\"%\" IDENTIFIED BY \"zKg6TUkk\";'\e[0m\r\n"
+  - delay: 1100
+    content: "Creating peddler_local_mysql-job_run ... \r\r\n"
+  - delay: 215
+    content: "\e[1A\e[2K\rCreating peddler_local_mysql-job_run ... \e[32mdone\e[0m\r\e[1B"
+  - delay: 3264
+    content: "Initialising MySQL...\r\n"
+  - delay: 24
+    content: "mysql: [Warning] Using a password on the command line interface can be insecure.\r\n"
+  - delay: 186
+    content: "MySQL is up and running\r\nmysql: [Warning] Using a password on the command line interface can be insecure.\r\n"
+  - delay: 132
+    content: "mysql: [Warning] Using a password on the command line interface can be insecure.\r\n"
+  - delay: 2159
+    content: "\e[34mInitialising opencart...\e[0m\r\n"
+  - delay: 15
+    content: "\e[35mdocker-compose -f /Users/derrickanderson/desktop/peddler_root/env/local/docker-compose.yml --project-name peddler_local exec opencart sh -e -c cd /var/www/html/install && \\\r\nphp cli_install.php install \\\r\n    --username admin \\\r\n    --email sales@demoshop.com \\\r\n    --password opencart \\\r\n    --cloud 0 \\\r\n    --http_server http://localhost:8000/ \\\r\n    --db_driver mysqli \\\r\n    --db_hostname mysql \\\r\n    --db_username opencart \\\r\n    --db_password zKg6TUkk \\\r\n    --db_database opencart \\\r\n    --db_port 3306 \\\r\n    --db_prefix oc_\e[0m\r\n"
+  - delay: 1793
+    content: "\r\nWarning: Use of undefined constant DIR_STORAGE - assumed 'DIR_STORAGE' (this will throw an Error in a future version of PHP) in /var/www/html/system/startup.php on line 70\r\n"
+  - delay: 17818
+    content: "SUCCESS! Opencart successfully installed on your server\r\nStore link: http://localhost:8000/\r\nAdmin link: http://localhost:8000/admin/\r\n\r\n"
+  - delay: 197
+    content: "\e[34mAll services initialised.\e[0m\r\n/Users/derrickanderson/desktop/peddler_root/env/version\r\n"
+  - delay: 33
+    content: "\e[34mThe OpenCart platform is now running in detached mode\r\nYour OpenCart platform is ready and can be accessed at the following urls:\r\n\r\n    http://localhost:8000/\r\n    \e[0m\r\n"
+  - delay: 51
+    content: 'Derricks-MacBook-Pro:peddler derrickanderson$ '
+  - delay: 3513
+    content: "logout\r\n"

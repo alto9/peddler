@@ -18,15 +18,13 @@ services:
     restart: unless-stopped
   {% endif %}
 
-  {% if RUN_STORE %}
-  store:
+  {% if RUN_OPENCART %}
+  opencart:
     image: {{ DOCKER_IMAGE_OPENCART }}
+    user: "www-data:www-data"
     ports:
       - "8000:80"
     restart: unless-stopped
-    # volumes:
-    #   - ../apps/opencart/config.php:/var/www/html/config.php:rw
-    #   - ../apps/opencart/admin/config.php:/var/www/html/admin/config.php:rw
     depends_on:
       {% if RUN_MYSQL %}- mysql{% endif %}
       {% if RUN_SMTP %}- smtp{% endif %}

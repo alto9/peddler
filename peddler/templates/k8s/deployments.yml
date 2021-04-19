@@ -34,25 +34,25 @@ spec:
           persistentVolumeClaim:
             claimName: caddy
 {% endif %}
-{% if RUN_STORE %}
+{% if RUN_OPENCART %}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: store
+  name: opencart
   labels:
-    app.kubernetes.io/name: store
+    app.kubernetes.io/name: opencart
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: store
+      app.kubernetes.io/name: opencart
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: store
+        app.kubernetes.io/name: opencart
     spec:
       containers:
-        - name: store
+        - name: opencart
           image: {{ DOCKER_IMAGE_OPENCART }}
           ports:
             - containerPort: 80

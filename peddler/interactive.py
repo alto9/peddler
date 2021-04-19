@@ -31,120 +31,38 @@ def load_all(
 
 
 def ask_questions(config: Dict[str, Any], defaults: Dict[str, Any]) -> None:
-    run_for_prod = config.get("STORE_HOST") != "local.peddler.io"
+    run_for_prod = config.get("STORE_HOST") != "localhost:8000/"
     run_for_prod = click.confirm(
         fmt.question(
-            "Are you configuring a production platform? Type 'n' if you are just testing Peddler on your local computer"
+            "Are you configuring a production ready store? Type 'n' if you are just testing Peddler on your local computer"
         ),
         prompt_suffix=" ",
         default=run_for_prod,
     )
     if not run_for_prod:
         dev_values = {
-            "STORE_HOST": "local.peddler.io",
+            "STORE_HOST": "localhost:8000/",
             "ENABLE_HTTPS": False,
         }
         fmt.echo_info(
-            """As you are not running this platform in production, we automatically set the following configuration values:"""
+            """As you are not running this store in production, we automatically set the following configuration values:"""
         )
         for k, v in dev_values.items():
             config[k] = v
             fmt.echo_info("    {} = {}".format(k, v))
 
     if run_for_prod:
-        ask("Your website domain name ", "STORE_HOST", config, defaults)
+        ask("Your shopping cart domain name ", "STORE_HOST", config, defaults)
         if "localhost" in config["STORE_HOST"]:
             raise exceptions.PeddlerError(
-                "You may not use 'localhost' as the store domain name. To run a local platform for testing purposes you should answer 'n' to the previous question."
+                "You may not use 'localhost' as the store domain name. To run a local store for testing purposes you should answer 'n' to the previous question."
             )
 
-    ask("Your platform name/title", "PLATFORM_NAME", config, defaults)
-    ask("Your public contact email address", "CONTACT_EMAIL", config, defaults)
-    ask_choice(
-        "The default language code for the platform",
-        "LANGUAGE_CODE",
-        config,
-        defaults,
-        [
-            "en",
-            "am",
-            "ar",
-            "az",
-            "bg-bg",
-            "bn-bd",
-            "bn-in",
-            "bs",
-            "ca",
-            "ca@valencia",
-            "cs",
-            "cy",
-            "da",
-            "de-de",
-            "el",
-            "en-uk",
-            "en@lolcat",
-            "en@pirate",
-            "es-419",
-            "es-ar",
-            "es-ec",
-            "es-es",
-            "es-mx",
-            "es-pe",
-            "et-ee",
-            "eu-es",
-            "fa",
-            "fa-ir",
-            "fi-fi",
-            "fil",
-            "fr",
-            "gl",
-            "gu",
-            "he",
-            "hi",
-            "hr",
-            "hu",
-            "hy-am",
-            "id",
-            "it-it",
-            "ja-jp",
-            "kk-kz",
-            "km-kh",
-            "kn",
-            "ko-kr",
-            "lt-lt",
-            "ml",
-            "mn",
-            "mr",
-            "ms",
-            "nb",
-            "ne",
-            "nl-nl",
-            "or",
-            "pl",
-            "pt-br",
-            "pt-pt",
-            "ro",
-            "ru",
-            "si",
-            "sk",
-            "sl",
-            "sq",
-            "sr",
-            "sv",
-            "sw",
-            "ta",
-            "te",
-            "th",
-            "tr-tr",
-            "uk",
-            "ur",
-            "vi",
-            "uz",
-            "zh-cn",
-            "zh-hk",
-            "zh-tw",
-        ],
-    )
+    ask("Your store name/title", "PLATFORM_NAME", config, defaults)
+    ask("Your new admin account username", "OPENCART_ADMIN_USERNAME", config, defaults)
+    ask("Your new admin account password", "OPENCART_ADMIN_PASSWORD", config, defaults)
+    ask("Email address for admin account", "CONTACT_EMAIL", config, defaults)
+    
     if run_for_prod:
         ask_bool(
             (
