@@ -8,12 +8,12 @@ Peddler: the cloud friendly open source e-commerce solution for DIY'ers.
   :width: 125px
   :align: left
 
-Peddler is an open source, container-based, OpenCart distribution from [https://alto9.com](https://alto9.com).
+Peddler is an open source, container-based, OpenCart distribution from `Alto9 <https://www.alto9.com>`__.
 
 It's written in Python and Click and is designed to make launching an OpenCart instance as easy as possible.
 
-- [Review product documentation](http://www.alto9.com/peddler/docs).
-- [Download compiled version](https://www.alto9.com/peddler/download).
+- `Product Documentation (TBD) <https://www.alto9.com/peddler/docs>`__
+- `Download Compiled Version (TBD) <https://www.alto9.com/peddler/download>`__
 
 Deploy using docker-compose
 ---------------------------
@@ -42,4 +42,4 @@ Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-Any other questions, mail us at info@alto9.com. We’d love to meet you!
+Any other questions, mail us at info@alto9.com. We’d love to chat!
