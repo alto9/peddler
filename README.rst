@@ -1,4 +1,12 @@
-# [![peddler](https://raw.githubusercontent.com/alto9/peddler/master/docs/img/peddler_logo_light.png)](https://alto9.com)
+.. _readme_intro_start:
+
+Peddler: the cloud friendly open source e-commerce solution for DIY'ers.
+========================================================================
+
+.. image:: https://raw.githubusercontent.com/alto9/peddler/master/docs/img/peddler_logo_light.png
+  :alt: Peddler logo
+  :width: 125px
+  :align: left
 
 Peddler is an open source, container-based, OpenCart distribution from [https://alto9.com](https://alto9.com).
 
@@ -9,11 +17,12 @@ It's written in Python and Click and is designed to make launching an OpenCart i
 
 Deploy using docker-compose
 ---------------------------
-> peddler local quickstart
+``peddler local quickstart``
 
 
-## Deploy using Kubernetes
-> peddler k8s quickstart
+Deploy using Kubernetes
+-----------------------
+``peddler k8s quickstart``
 
 License
 -------
