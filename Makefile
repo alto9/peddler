@@ -10,12 +10,12 @@ docs: ## Build html documentation
 
 compile-requirements: ## Compile requirements files
 	pip-compile requirements/base.in
-	# pip-compile requirements/dev.in
+	pip-compile requirements/dev.in
 	pip-compile requirements/docs.in
 
 upgrade-requirements: ## Upgrade requirements files
 	pip-compile --upgrade requirements/base.in
-	# pip-compile --upgrade requirements/dev.in
+	pip-compile --upgrade requirements/dev.in
 	pip-compile --upgrade requirements/docs.in
 
 build-pythonpackage: ## Build a python package ready to upload to pypi
@@ -45,7 +45,7 @@ format: ## Format code automatically
 	black $(BLACK_OPTS)
 
 bootstrap-dev: ## Install dev requirements
-	pip install .
+# 	pip install .
 	pip install -r requirements/dev.txt
 
 bootstrap-dev-plugins: bootstrap-dev ## Install dev requirement and all supported plugins
