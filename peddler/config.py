@@ -4,7 +4,7 @@ from typing import Dict, Any, Tuple
 from . import exceptions
 from . import env
 from . import fmt
-from . import plugins
+#from . import plugins
 from . import serialize
 from . import utils
 
@@ -76,7 +76,7 @@ def load_current(root: str, defaults: Dict[str, str]) -> Dict[str, Any]:
     config = load_user(root)
     load_env(config, defaults)
     load_required(config, defaults)
-    load_plugins(config, defaults)
+    # load_plugins(config, defaults)
     return config
 
 
@@ -111,26 +111,26 @@ def load_required(config: Dict[str, str], defaults: Dict[str, str]) -> None:
             config[key] = env.render_unknown(config, defaults[key])
 
 
-def load_plugins(config: Dict[str, str], defaults: Dict[str, str]) -> None:
-    """
-    Add, override and set new defaults from plugins.
-    """
-    for plugin in plugins.iter_enabled(config):
-        # Add new config key/values
-        for key, value in plugin.config_add.items():
-            new_key = plugin.config_key(key)
-            if new_key not in config:
-                config[new_key] = env.render_unknown(config, value)
-
-        # Create new defaults
-        for key, value in plugin.config_defaults.items():
-            defaults[plugin.config_key(key)] = value
-
-        # Set existing config key/values: here, we do not override existing values
-        # This must come last, as overridden values may depend on plugin defaults
-        for key, value in plugin.config_set.items():
-            if key not in config:
-                config[key] = env.render_unknown(config, value)
+# def load_plugins(config: Dict[str, str], defaults: Dict[str, str]) -> None:
+#     """
+#     Add, override and set new defaults from plugins.
+#     """
+#     for plugin in plugins.iter_enabled(config):
+#         # Add new config key/values
+#         for key, value in plugin.config_add.items():
+#             new_key = plugin.config_key(key)
+#             if new_key not in config:
+#                 config[new_key] = env.render_unknown(config, value)
+#
+#         # Create new defaults
+#         for key, value in plugin.config_defaults.items():
+#             defaults[plugin.config_key(key)] = value
+#
+#         # Set existing config key/values: here, we do not override existing values
+#         # This must come last, as overridden values may depend on plugin defaults
+#         for key, value in plugin.config_set.items():
+#             if key not in config:
+#                 config[key] = env.render_unknown(config, value)
 
 
 def is_service_activated(config: Dict[str, Any], service: str) -> bool:
@@ -147,14 +147,14 @@ def upgrade_obsolete(config: Dict[str, Any]) -> None:
         config["OPENCART_MYSQL_DATABASE"] = config.pop("MYSQL_DATABASE")
     if "MYSQL_USERNAME" in config:
         config["OPENCART_MYSQL_USERNAME"] = config.pop("MYSQL_USERNAME")
-    if "RUN_NOTES" in config:
-        if config["RUN_NOTES"]:
-            plugins.enable(config, "notes")
-        config.pop("RUN_NOTES")
-    if "RUN_XQUEUE" in config:
-        if config["RUN_XQUEUE"]:
-            plugins.enable(config, "xqueue")
-        config.pop("RUN_XQUEUE")
+    #if "RUN_NOTES" in config:
+        #if config["RUN_NOTES"]:
+            #plugins.enable(config, "notes")
+        #config.pop("RUN_NOTES")
+    #if "RUN_XQUEUE" in config:
+        #if config["RUN_XQUEUE"]:
+            #plugins.enable(config, "xqueue")
+        #config.pop("RUN_XQUEUE")
     # Replace WEB_PROXY by RUN_CADDY
     if "WEB_PROXY" in config:
         config["RUN_CADDY"] = not config.pop("WEB_PROXY")
