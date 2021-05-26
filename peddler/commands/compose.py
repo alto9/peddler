@@ -172,17 +172,17 @@ def init(context: Context, limit: str) -> None:
     jobs.initialise(runner, limit_to=limit)
 
 
-@click.command(
-    help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
-)
-@click.argument("theme_name")
-@click.argument("domain_names", metavar="domain_name", nargs=-1)
-@click.pass_obj
-def settheme(context: Context, theme_name: str, domain_names: List[str]) -> None:
-    config = peddler_config.load(context.root)
-    runner = ComposeJobRunner(context.root, config, context.docker_compose)
-    for domain_name in domain_names:
-        jobs.set_theme(theme_name, domain_name, runner)
+# @click.command(
+#     help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
+# )
+# @click.argument("theme_name")
+# @click.argument("domain_names", metavar="domain_name", nargs=-1)
+# @click.pass_obj
+# def settheme(context: Context, theme_name: str, domain_names: List[str]) -> None:
+#     config = peddler_config.load(context.root)
+#     runner = ComposeJobRunner(context.root, config, context.docker_compose)
+#     for domain_name in domain_names:
+#         jobs.set_theme(theme_name, domain_name, runner)
 
 
 @click.command(
@@ -298,7 +298,7 @@ def add_commands(command_group: click.Group) -> None:
     command_group.add_command(restart)
     command_group.add_command(reboot)
     command_group.add_command(init)
-    command_group.add_command(settheme)
+    # command_group.add_command(settheme)
     command_group.add_command(dc_command)
     command_group.add_command(run)
     command_group.add_command(bindmount_command)
