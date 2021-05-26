@@ -292,17 +292,17 @@ def init(context: Context, limit: Optional[str]) -> None:
             wait_for_pod_ready(config, service)
     jobs.initialise(runner, limit_to=limit)
 
-@click.command(
-    help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
-)
-@click.argument("theme_name")
-@click.argument("domain_names", metavar="domain_name", nargs=-1)
-@click.pass_obj
-def settheme(context: Context, theme_name: str, domain_names: List[str]) -> None:
-    config = peddler_config.load(context.root)
-    runner = K8sJobRunner(context.root, config)
-    for domain_name in domain_names:
-        jobs.set_theme(theme_name, domain_name, runner)
+# @click.command(
+#     help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
+# )
+# @click.argument("theme_name")
+# @click.argument("domain_names", metavar="domain_name", nargs=-1)
+# @click.pass_obj
+# def settheme(context: Context, theme_name: str, domain_names: List[str]) -> None:
+#     config = peddler_config.load(context.root)
+#     runner = K8sJobRunner(context.root, config)
+#     for domain_name in domain_names:
+#         jobs.set_theme(theme_name, domain_name, runner)
 
 
 @click.command(name="exec", help="Execute a command in a pod of the given application")

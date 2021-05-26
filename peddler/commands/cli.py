@@ -20,7 +20,7 @@ def main():
         cli.add_command(local)
         cli.add_command(k8s)
         cli.add_command(print_help)
-        # cli()
+        cli()
     except KeyboardInterrupt:
         pass
     except exceptions.PeddlerError as e:
