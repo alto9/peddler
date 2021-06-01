@@ -19,7 +19,7 @@ script:
   - pip install --upgrade pip setuptools==44.0.0
   - make ci-info
   - make bootstrap-dev-plugins
-  - make test
+#  - make test
   - make bundle
   - make ci-test-bundle
 
