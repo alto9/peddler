@@ -27,19 +27,19 @@ Deploy using Kubernetes
 License
 -------
 
-See the [LICENSE file](LICENSE.txt) for license rights and limitations.
+See the `LICENSE.txt <./LICENSE.txt>`__ for license rights and limitations.
 
 Get the Latest News
 -------------------
 
-- **Twitter** - Follow [Alto9](https://twitter.com/alto9cloud).
-- **Blog** - Get the latest updates from the [Alto9 blog](https://alto9.com/blog/).
-- **Facebook** - Follow [Alto9](https://www.facebook.com/Alto9Inc).
-- **LinkedIn** - Follow [Alto9](https://www.linkedin.com/company/alto9).
+- **Twitter** - https://twitter.com/alto9cloud
+- **Blog** - https://alto9.com/blog/
+- **Facebook** - https://www.facebook.com/Alto9Inc
+- **LinkedIn** - https://www.linkedin.com/company/alto9
 
 Contributing
 ------------
 
-Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+Please see `CONTRIBUTING.md <./CONTRIBUTING.md>`__.
 
 Any other questions, mail us at info@alto9.com. We’d love to chat!
