@@ -45,7 +45,6 @@ format: ## Format code automatically
 	black $(BLACK_OPTS)
 
 bootstrap-dev: ## Install dev requirements
-# 	pip install .
 	pip install -r requirements/dev.txt
 
 bootstrap-dev-plugins: bootstrap-dev ## Install dev requirement and all supported plugins
