@@ -39,7 +39,7 @@ test-types: ## Check type definitions
 	mypy --exclude=templates --ignore-missing-imports --strict peddler/ tests/
 
 test-pythonpackage: build-pythonpackage ## Test that package can be uploaded to pypi
-	twine check dist/peddler-opencart-$(shell make version).tar.gz
+	twine check dist/peddler-$(shell make version).tar.gz
 
 format: ## Format code automatically
 	black $(BLACK_OPTS)
