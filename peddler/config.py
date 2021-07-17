@@ -4,7 +4,8 @@ from typing import Dict, Any, Tuple
 from . import exceptions
 from . import env
 from . import fmt
-#from . import plugins
+
+# from . import plugins
 from . import serialize
 from . import utils
 
@@ -86,7 +87,6 @@ def load_user(root: str) -> Dict[str, Any]:
         return {}
 
     config = load_config_file(path)
-    upgrade_obsolete(config)
     return config
 
 
@@ -135,45 +135,6 @@ def load_required(config: Dict[str, str], defaults: Dict[str, str]) -> None:
 
 def is_service_activated(config: Dict[str, Any], service: str) -> bool:
     return config["RUN_" + service.upper()] is not False
-
-
-def upgrade_obsolete(config: Dict[str, Any]) -> None:
-    # OpenCart-specific mysql passwords
-    if "MYSQL_PASSWORD" in config:
-        config["MYSQL_ROOT_PASSWORD"] = config["MYSQL_PASSWORD"]
-        config["OPENCART_MYSQL_PASSWORD"] = config["MYSQL_PASSWORD"]
-        config.pop("MYSQL_PASSWORD")
-    if "MYSQL_DATABASE" in config:
-        config["OPENCART_MYSQL_DATABASE"] = config.pop("MYSQL_DATABASE")
-    if "MYSQL_USERNAME" in config:
-        config["OPENCART_MYSQL_USERNAME"] = config.pop("MYSQL_USERNAME")
-    #if "RUN_NOTES" in config:
-        #if config["RUN_NOTES"]:
-            #plugins.enable(config, "notes")
-        #config.pop("RUN_NOTES")
-    #if "RUN_XQUEUE" in config:
-        #if config["RUN_XQUEUE"]:
-            #plugins.enable(config, "xqueue")
-        #config.pop("RUN_XQUEUE")
-    # Replace WEB_PROXY by RUN_CADDY
-    if "WEB_PROXY" in config:
-        config["RUN_CADDY"] = not config.pop("WEB_PROXY")
-    # Rename ACTIVATE_HTTPS to ENABLE_HTTPS
-    if "ACTIVATE_HTTPS" in config:
-        config["ENABLE_HTTPS"] = config.pop("ACTIVATE_HTTPS")
-    # Replace RUN_* variables by RUN_*
-    for name in [
-        "ACTIVATE_LMS",
-        "ACTIVATE_CMS",
-        "ACTIVATE_FORUM",
-        "ACTIVATE_ELASTICSEARCH",
-        "ACTIVATE_MONGODB",
-        "ACTIVATE_MYSQL",
-        "ACTIVATE_REDIS",
-        "ACTIVATE_SMTP",
-    ]:
-        if name in config:
-            config[name.replace("ACTIVATE_", "RUN_")] = config.pop(name)
 
 
 def convert_json2yml(root: str) -> None:

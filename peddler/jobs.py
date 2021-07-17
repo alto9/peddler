@@ -4,6 +4,7 @@ from . import env
 from . import fmt
 from . import plugins
 
+
 class BaseJobRunner:
     def __init__(self, root: str, config: Dict[str, Any]):
         self.root = root
@@ -53,7 +54,7 @@ def initialise(runner: BaseJobRunner, limit_to: Optional[str] = None) -> None:
     for service in ["opencart"]:
         if limit_to is None or limit_to == service:
             fmt.echo_info("Initialising {}...".format(service))
-            runner.run_job_from_template(service, "hooks", service, "init")
+            runner.run_cmd_from_template(service, "cmd", service, "init")
     for plugin_name, hook in runner.iter_plugin_hooks("init"):
         if limit_to is None or limit_to == plugin_name:
             for service in hook:

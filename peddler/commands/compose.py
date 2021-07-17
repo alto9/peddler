@@ -83,27 +83,24 @@ class ComposeJobRunner(jobs.BaseJobRunner):
 
     def run_cmd(self, service: str, command: str) -> int:
         """
-        Run the specified command on the "{{ service }}" service from local/docker-compose.yml. 
-        For backward-compatibility reasons, if the corresponding
-        service does not exist, run the service from good old regular
-        docker-compose.yml.
+        Run the specified command on the "{{ service }}" service from local/docker-compose.yml.
         """
         compose_path = peddler_env.pathjoin(self.root, "local", "docker-compose.yml")
 
         opts = [] if utils.is_a_tty() else ["-T"]
 
-        if service in serialize.load(open(compose_path).read())["services"]:
-            return self.docker_compose_func(
-                self.root,
-                self.config,
-                "exec",
-                *opts,
-                service,
-                "sh",
-                "-e",
-                "-c",
-                command,
-            )
+        # if service in serialize.load(open(compose_path).read())["services"]:
+        return self.docker_compose_func(
+            self.root,
+            self.config,
+            "exec",
+            *opts,
+            service,
+            "sh",
+            "-e",
+            "-c",
+            command,
+        )
 
 
 @click.command(help="Run all or a selection of configured OpenCart services")
@@ -141,7 +138,7 @@ def reboot(context: click.Context, detach: bool, services: List[str]) -> None:
 
 @click.command(
     short_help="Restart some components from a running platform.",
-    help="""Specify 'store' to restart the lms, cms and workers, or 'all' to
+    help="""Specify 'store' to restart the store, or 'all' to
 restart all services. Note that this performs a 'docker-compose restart', so new images
 may not be taken into account. It is useful for reloading settings, for instance. To
 fully stop the platform, use the 'reboot' command.""",

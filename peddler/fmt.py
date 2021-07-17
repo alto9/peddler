@@ -2,6 +2,7 @@ import click
 
 STDOUT = None
 
+
 def title(text: str) -> str:
     indent = 8
     separator = "=" * (len(text) + 2 * indent)

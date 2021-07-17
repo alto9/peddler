@@ -6,6 +6,7 @@ import tempfile
 from peddler import config as peddler_config
 from peddler import interactive
 
+
 class ConfigTests(unittest.TestCase):
     def test_version(self) -> None:
         defaults = peddler_config.load_defaults()

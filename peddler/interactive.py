@@ -62,7 +62,7 @@ def ask_questions(config: Dict[str, Any], defaults: Dict[str, Any]) -> None:
     ask("Your new admin account username", "OPENCART_ADMIN_USERNAME", config, defaults)
     ask("Your new admin account password", "OPENCART_ADMIN_PASSWORD", config, defaults)
     ask("Email address for admin account", "CONTACT_EMAIL", config, defaults)
-    
+
     if run_for_prod:
         ask_bool(
             (

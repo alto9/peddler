@@ -1,5 +1,6 @@
 from typing import Any, Dict
 
+
 def unimplemented_docker_compose(
     root: str, config: Dict[str, Any], *command: str
 ) -> int:

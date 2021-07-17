@@ -57,8 +57,8 @@ def quickstart(context: click.Context, non_interactive: bool, pullimages: bool) 
     context.invoke(compose.start, detach=True)
     click.echo(fmt.title("Database creation and migrations"))
     context.invoke(compose.init)
-    #click.echo(fmt.title("Initial store configuration"))
-    #context.invoke(compose.init)
+    # click.echo(fmt.title("Initial store configuration"))
+    # context.invoke(compose.init)
 
     config = peddler_config.load(context.obj.root)
     fmt.echo_info(
@@ -66,12 +66,12 @@ def quickstart(context: click.Context, non_interactive: bool, pullimages: bool) 
 Your OpenCart platform is ready and can be accessed at the following urls:
 
     {http}://{store_host}
+    {http}://{store_host}admin
     """.format(
             http="https" if config["ENABLE_HTTPS"] else "http",
             store_host=config["STORE_HOST"],
         )
     )
-
 
 
 local.add_command(quickstart)

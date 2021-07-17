@@ -9,6 +9,7 @@ __pycache__
 /build/
 /dist/
 /releases/
+/docs/_build
 
 .idea
 venv

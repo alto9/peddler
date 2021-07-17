@@ -193,16 +193,7 @@ def save(root: str, config: Dict[str, Any]) -> None:
         if plugin.templates_root:
             save_plugin_templates(plugin, root, config)
 
-    upgrade_obsolete(root)
     fmt.echo_info("Environment generated in {}".format(base_dir(root)))
-
-
-def upgrade_obsolete(root: str) -> None:
-    # peddler.conf was renamed to _peddler.conf in order to be the first config file loaded
-    # by nginx
-    nginx_peddler_conf = pathjoin(root, "apps", "nginx", "peddler.conf")
-    if os.path.exists(nginx_peddler_conf):
-        os.remove(nginx_peddler_conf)
 
 
 def save_plugin_templates(

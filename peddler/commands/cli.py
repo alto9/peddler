@@ -14,13 +14,13 @@ from .. import fmt
 from .. import utils
 
 
-def main():
+def main() -> None:
     try:
         cli.add_command(config_command)
         cli.add_command(local)
         cli.add_command(k8s)
         cli.add_command(print_help)
-        cli()
+        cli()  # pylint: disable=no-value-for-parameter
     except KeyboardInterrupt:
         pass
     except exceptions.PeddlerError as e:
@@ -40,7 +40,7 @@ def main():
     help="Root project directory (environment variable: PEDDLER_ROOT)",
 )
 @click.pass_context
-def cli(context: click.Context, root: str):
+def cli(context: click.Context, root: str) -> None:
     if utils.is_root():
         fmt.echo_alert(
             "You are running Peddler as root. This is strongly not recommended. If you are doing this in order to access"
@@ -51,7 +51,7 @@ def cli(context: click.Context, root: str):
 
 
 @click.command(help="Print this help", name="help")
-def print_help():
+def print_help() -> None:
     context = click.Context(cli)
     click.echo(cli.get_help(context))
 

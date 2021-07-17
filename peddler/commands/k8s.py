@@ -203,6 +203,7 @@ def quickstart(context: click.Context, non_interactive: bool) -> None:
         )
     )
 
+
 @click.command(help="Run all configured OpenCart services")
 @click.pass_obj
 def start(context: Context) -> None:
@@ -292,6 +293,7 @@ def init(context: Context, limit: Optional[str]) -> None:
             wait_for_pod_ready(config, service)
     jobs.initialise(runner, limit_to=limit)
 
+
 # @click.command(
 #     help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
 # )
@@ -345,6 +347,7 @@ def logs(
 def wait(context: Context, name: str) -> None:
     config = peddler_config.load(context.root)
     wait_for_pod_ready(config, name)
+
 
 def kubectl_exec(
     config: Dict[str, Any], service: str, command: str, attach: bool = False
