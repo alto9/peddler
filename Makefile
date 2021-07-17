@@ -22,7 +22,7 @@ build-pythonpackage: ## Build a python package ready to upload to pypi
 	python setup.py sdist
 
 push-pythonpackage: ## Push python package to pypi
-	twine upload --skip-existing dist/peddler-opencart-$(shell make version).tar.gz
+	twine upload --skip-existing dist/peddler-$(shell make version).tar.gz
 
 test: test-lint test-unit test-types test-format test-pythonpackage ## Run all tests by decreasing order or priority
 
@@ -89,13 +89,6 @@ ci-test-bundle: ## Run basic tests on bundle
 	# ./dist/peddler plugins enable discovery ecommerce license minio notes xqueue
 	# ./dist/peddler plugins list
 	# ./dist/peddler license --help
-
-./releases/github-release: ## Download github-release binary
-	mkdir -p releases/
-	cd releases/ \
-		&& curl -sSL -o ./github-release.bz2 "https://github.com/github-release/github-release/releases/download/v0.10.0/$(shell uname -s | tr "[:upper:]" "[:lower:]")-amd64-github-release.bz2" \
-		&& bzip2 -d -f ./github-release.bz2 \
-		&& chmod a+x ./github-release
 
 ci-push-bundle: ./releases/github-release ## Upload assets to github
 	sed "s/PEDDLER_VERSION/v$(shell make version)/g" docs/_release_description.md > releases/description.md

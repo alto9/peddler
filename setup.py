@@ -26,7 +26,7 @@ def is_requirement(line):
 ABOUT = load_about()
 
 setup(
-    name="peddler-opencart",
+    name="peddler",
     version=ABOUT["__version__"],
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
