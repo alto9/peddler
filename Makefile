@@ -85,27 +85,10 @@ ci-test-bundle: ## Run basic tests on bundle
 	yes "" | ./dist/peddler config save --interactive
 	./dist/peddler config save
 	# ./dist/peddler plugins list
-	# ./dist/peddler plugins enable discovery ecommerce figures license minio notes xqueue
-	# ./dist/peddler plugins enable discovery ecommerce license minio notes xqueue
+	# ./dist/peddler plugins enable minio
+	# ./dist/peddler plugins enable minio
 	# ./dist/peddler plugins list
 	# ./dist/peddler license --help
-
-ci-push-bundle: ./releases/github-release ## Upload assets to github
-	sed "s/PEDDLER_VERSION/v$(shell make version)/g" docs/_release_description.md > releases/description.md
-	git log -1 --pretty=format:%b >> releases/description.md
-	./releases/github-release release \
-		--user alto9 \
-		--repo peddler \
-		--tag "v$(shell make version)" \
-		--name "v$(shell make version)" \
-		--description "$$(cat releases/description.md)" || true
-	./releases/github-release upload \
-	    --user alto9 \
-	    --repo peddler \
-	    --tag "v$(shell make version)" \
-	    --name "peddler-$$(uname -s)_$$(uname -m)" \
-	    --file ./dist/peddler \
-			--replace
 
 ci-bootstrap-images:
 	pip install .
