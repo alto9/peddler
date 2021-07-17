@@ -23,10 +23,19 @@ script:
   - make bundle
   - make ci-test-bundle
 
+# deploy:
+#   # Create github release and push binary to github
+#   - provider: script
+#     script: make ci-push-bundle
+#     skip_cleanup: true
+#     on:
+#       tags: true
+
 deploy:
-  # Create github release and push binary to github
-  - provider: script
-    script: make ci-push-bundle
-    skip_cleanup: true
-    on:
-      tags: true
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  file: "./dist/peddler"
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true
