@@ -4,7 +4,6 @@
 
 .. image:: img/quickstart.gif
     :alt: Peddler local quickstart
-    :target: https://terminalizer.com/view/91b0bfdd557
 
 ----------------------------------
 
