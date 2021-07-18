@@ -29,7 +29,7 @@ pygments_style = None
 # -- Options for HTML output -------------------------------------------------
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {
-    "logo_only": True,
+    "logo_only": False,
     "style_nav_header_background": "#009CEA",
 }
 html_context = {
@@ -42,7 +42,7 @@ html_context = {
 html_static_path = ["img"]
 
 # Custom settings
-html_logo = "./img/peddler_logo_light.png"
+# html_logo = "peddler_logo_light.png"
 html_favicon = "./img/favicon.png"
 html_show_sourcelink = False
 html_display_github = True
