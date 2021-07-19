@@ -9,7 +9,8 @@ Submit a GitHub issue with our issue template. Please make sure to do your due d
 Great! Follow the steps below to get your workstation setup. These steps are verified on Mac OSX but are very similar to other platforms.
 
 #### Prerequisites
-- Python3 (`> brew install python3`)
+- Python 3.8
+- Docker Desktop 20.10.7
 
 #### 1. Clone peddler
 `> git clone https://github.com/alto9/peddler.git && cd peddler`
@@ -17,16 +18,19 @@ Great! Follow the steps below to get your workstation setup. These steps are ver
 #### 2. Check out a new branch from master
 `> git checkout -b <yourname>/<issuenumber>`
 
-#### 3. Setup a virtualenv for Python 3.7 (OSX Default)
-`> python3 -m venv venv37`
+#### 3. Setup a virtualenv for Python
+`> cd peddler && python3 -m venv v38`
 
 #### 4. Activate the virtual environment
-`> source venv37/bin/activate`
+`> source v38/bin/activate`
 
-#### 5. Install Peddler locally in the venv, so that you can update and test in real time
+#### 5. Install dependencies
+`> make bootstrap-dev`
+
+#### 6. Install Peddler locally in the venv, so that you can update and test in real time
 `> pip3 install --editable .`
 
-#### 6. When you are done working, exit your virtual env
+#### 7. When you are done working, exit your virtual env
 `> deactivate`
 
-#### 7. Finally, [create a pull request](https://help.github.com/articles/creating-a-pull-request). We'll then review and merge it.
+#### 8. Finally, [create a pull request](https://help.github.com/articles/creating-a-pull-request). We'll then review and merge it.
