@@ -8,7 +8,7 @@ Install Peddler
 Requirements
 ------------
 
-* Supported OS: Peddler runs on any 64-bit, UNIX-based system. It was also reported to work on Windows.
+* Supported OS: Peddler runs on any 64-bit, UNIX-based system. If you plan to try to use Windows, you will need to install from source.
 * Required software:
 
     - `Docker <https://docs.docker.com/engine/installation/>`__: v18.06.0+
