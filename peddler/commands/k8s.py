@@ -78,7 +78,7 @@ class K8sJobRunner(jobs.BaseJobRunner):
             "--",
             "bash",
             "-c",
-            command
+            command,
         )
 
         return 0
