@@ -68,6 +68,21 @@ class K8sJobRunner(jobs.BaseJobRunner):
             if job.status.active
         ]
 
+    def run_cmd(self, service: str, command: str) -> int:
+        utils.kubectl(
+            "exec",
+            "-it",
+            "deploy/{}".format(service),
+            "-n",
+            self.config["K8S_NAMESPACE"],
+            "--",
+            "bash",
+            "-c",
+            command
+        )
+
+        return 0
+
     def run_job(self, service: str, command: str) -> int:
         job_name = "{}-job".format(service)
         try:

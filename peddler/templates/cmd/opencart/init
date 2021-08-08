@@ -1,8 +1,6 @@
-echo "Initialising OpenCart..."
+chmod +x /var/www/html/install/cli_install.php &&
 
-cd /var/www/html/install
-
-php cli_install.php install \
+php /var/www/html/install/cli_install.php install \
     --username {{ OPENCART_ADMIN_USERNAME }} \
     --email {{ CONTACT_EMAIL }} \
     --password {{ OPENCART_ADMIN_PASSWORD }} \

@@ -19,7 +19,7 @@ Great! Follow the steps below to get your workstation setup. These steps are ver
 `> git checkout -b <yourname>/<issuenumber>`
 
 #### 3. Setup a virtualenv for Python
-`> cd peddler && python3 -m venv v38`
+`> python3 -m venv v38`
 
 #### 4. Activate the virtual environment
 `> source v38/bin/activate`
