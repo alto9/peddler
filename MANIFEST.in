@@ -1,0 +1,2 @@
+include requirements/base.in
+recursive-include peddler/templates *
