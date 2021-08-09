@@ -10,6 +10,7 @@ __pycache__
 /dist/
 /releases/
 /docs/_build
+/peddler/templates/themes/
 
 .idea
 venv

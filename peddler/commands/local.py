@@ -57,8 +57,6 @@ def quickstart(context: click.Context, non_interactive: bool, pullimages: bool) 
     context.invoke(compose.start, detach=True)
     click.echo(fmt.title("Database creation and migrations"))
     context.invoke(compose.init)
-    # click.echo(fmt.title("Initial store configuration"))
-    # context.invoke(compose.init)
 
     config = peddler_config.load(context.obj.root)
     fmt.echo_info(

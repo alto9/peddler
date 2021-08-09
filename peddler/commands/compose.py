@@ -169,17 +169,28 @@ def init(context: Context, limit: str) -> None:
     jobs.initialise(runner, limit_to=limit)
 
 
-# @click.command(
-#     help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
-# )
-# @click.argument("theme_name")
-# @click.argument("domain_names", metavar="domain_name", nargs=-1)
-# @click.pass_obj
-# def settheme(context: Context, theme_name: str, domain_names: List[str]) -> None:
-#     config = peddler_config.load(context.root)
-#     runner = ComposeJobRunner(context.root, config, context.docker_compose)
-#     for domain_name in domain_names:
-#         jobs.set_theme(theme_name, domain_name, runner)
+@click.command(
+    help="Upload a design theme zip file. After upload, you will need to activate the theme in the OpenCart admin."
+)
+@click.argument("file_name")
+@click.pass_obj
+def upload_theme(context: Context, file_name: str) -> None:
+    upload_path = peddler_env.pathjoin(context.root, "themes", file_name, "upload")
+    if os.path.exists(upload_path):
+
+        utils.docker("cp", upload_path, "opencart:/tmp/{}/".format(file_name))
+
+        utils.docker(
+            "exec",
+            "-it",
+            "opencart",
+            "cp",
+            "-r",
+            "/tmp/{}/.".format(file_name),
+            "/var/www/html/",
+        )
+    else:
+        fmt.echo_alert("No theme upload folder was found at {}.".format(upload_path))
 
 
 @click.command(
@@ -295,7 +306,7 @@ def add_commands(command_group: click.Group) -> None:
     command_group.add_command(restart)
     command_group.add_command(reboot)
     command_group.add_command(init)
-    # command_group.add_command(settheme)
+    command_group.add_command(upload_theme)
     command_group.add_command(dc_command)
     command_group.add_command(run)
     command_group.add_command(bindmount_command)

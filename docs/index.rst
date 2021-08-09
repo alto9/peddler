@@ -19,6 +19,7 @@
    configuration
    troubleshooting
    peddler
+   themes
    faq
 
 Source code

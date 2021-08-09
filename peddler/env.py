@@ -15,7 +15,17 @@ from .__about__ import __version__
 
 TEMPLATES_ROOT = pkg_resources.resource_filename("peddler", "templates")
 VERSION_FILENAME = "version"
-BIN_FILE_EXTENSIONS = [".ico", ".jpg", ".png", ".ttf", ".woff", ".woff2"]
+BIN_FILE_EXTENSIONS = [
+    ".ico",
+    ".jpg",
+    ".png",
+    ".ttf",
+    ".woff",
+    ".woff2",
+    ".tpl",
+    ".twig",
+    ".zip",
+]
 
 
 class Renderer:
@@ -182,6 +192,7 @@ def save(root: str, config: Dict[str, Any]) -> None:
         "build/",
         "dev/",
         "k8s/",
+        "themes/",
         "local/",
         "webui/",
         VERSION_FILENAME,

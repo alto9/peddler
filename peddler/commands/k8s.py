@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 from time import sleep
 from typing import cast, Any, Dict, List, Optional, Type
 
@@ -309,17 +310,38 @@ def init(context: Context, limit: Optional[str]) -> None:
     jobs.initialise(runner, limit_to=limit)
 
 
-# @click.command(
-#     help="Set a theme for a given domain name. To reset to the default theme , use 'default' as the theme name."
-# )
-# @click.argument("theme_name")
-# @click.argument("domain_names", metavar="domain_name", nargs=-1)
-# @click.pass_obj
-# def settheme(context: Context, theme_name: str, domain_names: List[str]) -> None:
-#     config = peddler_config.load(context.root)
-#     runner = K8sJobRunner(context.root, config)
-#     for domain_name in domain_names:
-#         jobs.set_theme(theme_name, domain_name, runner)
+@click.command(
+    help="Upload a design theme zip file. After upload, you will need to activate the theme in the OpenCart admin."
+)
+@click.argument("file_name")
+@click.pass_obj
+def upload_theme(context: Context, file_name: str) -> None:
+    config = peddler_config.load(context.root)
+    upload_path = peddler_env.pathjoin(context.root, "themes", file_name, "upload")
+
+    selector = "app.kubernetes.io/name=opencart"
+    pods = K8sClients.instance().core_api.list_namespaced_pod(
+        namespace=config["K8S_NAMESPACE"], label_selector=selector
+    )
+    if not pods.items:
+        raise exceptions.PeddlerError(
+            "Could not find an active pod for the OpenCart service"
+        )
+    pod_name = pods.items[0].metadata.name
+
+    if os.path.exists(upload_path):
+        command = ["cp"]
+        command += [upload_path]
+        command += [
+            "{}/{}:/tmp/{}/".format(config["K8S_NAMESPACE"], pod_name, file_name)
+        ]
+
+        utils.kubectl(*command)
+    else:
+        fmt.echo_alert("No theme upload folder was found at {}.".format(upload_path))
+
+    movecmd = "cp -r /tmp/{}/. /var/www/html/".format(file_name)
+    kubectl_exec(config, "opencart", movecmd, attach=True)
 
 
 @click.command(name="exec", help="Execute a command in a pod of the given application")
@@ -410,7 +432,7 @@ k8s.add_command(stop)
 k8s.add_command(reboot)
 k8s.add_command(delete)
 k8s.add_command(init)
-# k8s.add_command(settheme)
+k8s.add_command(upload_theme)
 k8s.add_command(exec_command)
 k8s.add_command(logs)
 k8s.add_command(wait)

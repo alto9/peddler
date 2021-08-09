@@ -23,6 +23,7 @@ services:
   opencart:
     image: {{ DOCKER_IMAGE_OPENCART }}
     user: "www-data:www-data"
+    container_name: opencart
     ports:
       - "8000:80"
     restart: unless-stopped
